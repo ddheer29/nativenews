@@ -1,8 +1,8 @@
 import { Animated, StyleSheet, Text, View } from 'react-native';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { resetAndNavigate } from '../utils/navigationUtils';
 
-const SplashScreen = () => {
+const SplashScreen: FC = () => {
   const [isStop] = useState(false);
   const scale = new Animated.Value(1);
 

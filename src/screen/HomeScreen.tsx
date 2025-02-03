@@ -1,16 +1,13 @@
-import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {useColorScheme} from 'nativewind';
-import {apiBaseUrl} from '../utils/config';
-import {apiKey} from '../utils/ApiKey';
+import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { apiBaseUrl } from '../utils/config';
+import { apiKey } from '../utils/ApiKey';
 import axios from 'axios';
 import MiniHeader from '../components/MiniHeader';
 import BreakingNews from '../components/BreakingNews';
 import Header from '../components/Header';
 
 const HomeScreen = () => {
-  const {colorScheme, toggleColorScheme} = useColorScheme();
-
   const [breakingNews, setBreakingNews] = useState([]);
   const [recommandedNews, setRecommandedNews] = useState([]);
   const [breakingNewsLoading, setBreakingNewsLoading] = useState(false);
@@ -50,10 +47,8 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView className="bg-white flex-1 dark:bg-neutral-900">
-      <StatusBar
-        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
-      />
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+      <StatusBar />
       <Header />
       <View>
         <MiniHeader label={'Breaking News'} />

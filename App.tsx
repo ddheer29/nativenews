@@ -1,8 +1,7 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import Navigation from './src/navigation/Navigation'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import "./global.css"
 
 const queryClient = new QueryClient()
 

@@ -7,7 +7,15 @@ const Header: React.FC = () => {
   const { colorScheme, toggleColorScheme } = useColorScheme()
 
   return (
-    <View className="flex-row justify-between items-center mt-4 mx-4">
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: 16,
+        marginHorizontal: 16,
+      }}
+    >
       <View>
         <Text className='text-2xl text-green-800 uppercase dark:text-white'>Header</Text>
       </View>
