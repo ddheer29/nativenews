@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { FC } from 'react'
+import { colors } from '../utils/Theme';
 
 interface MiniHeaderProps {
   label: string;
@@ -7,11 +8,29 @@ interface MiniHeaderProps {
 
 const MiniHeader: FC<MiniHeaderProps> = ({ label }) => {
   return (
-    <View className="flex-row justify-between items-center px-4 my-4">
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 16,
+        marginVertical: 16,
+      }}
+    >
       <Text
-        className="text-xl text-green-800 dark:text-white"
+        style={{
+          fontWeight: 'bold',
+          fontSize: 24,
+          color: colors.switchGreen
+        }}
       >{label}</Text>
-      <Text className="text-base text-green-800 dark:text-neutral-300">
+      <Text
+        style={{
+          fontWeight: 'bold',
+          fontSize: 16,
+          color: colors.switchGreen
+        }}
+      >
         View all
       </Text>
     </View>

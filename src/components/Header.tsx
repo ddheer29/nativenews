@@ -1,10 +1,10 @@
-import { StyleSheet, Switch, Text, View } from 'react-native'
+import { StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { useColorScheme } from 'nativewind'
+import { MagnifyingGlassIcon } from 'react-native-heroicons/outline'
+import { colors } from '../utils/Theme'
 
 const Header: React.FC = () => {
 
-  const { colorScheme, toggleColorScheme } = useColorScheme()
 
   return (
     <View
@@ -17,11 +17,30 @@ const Header: React.FC = () => {
       }}
     >
       <View>
-        <Text className='text-2xl text-green-800 uppercase dark:text-white'>Header</Text>
+        <Text
+          style={{
+            fontWeight: 'bold',
+            fontSize: 24,
+            color: colors.switchGreen,
+            textTransform: 'uppercase',
+          }}
+        >Header</Text>
       </View>
-      <View className='flex-row space-x-4 rounded-full justify-center items-center'>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
         <Switch />
-        <Text>Dark Mode</Text>
+        <TouchableOpacity>
+          <MagnifyingGlassIcon
+            size={25}
+            strokeWidth={2}
+            color={colors.switchGreen}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   )

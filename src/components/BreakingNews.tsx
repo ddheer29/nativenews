@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { FC } from 'react'
-// import Carousal from 'react-native-snap-carousel';
 import BreakingNewsCard from './BreakingNewsCard';
 import { sizes } from '../utils/Theme';
 import { navigate } from '../utils/navigationUtils';
+import Carousel, {
+  ICarouselInstance,
+} from "react-native-reanimated-carousel";
 
 interface BeakingNewsProps {
   label: string;
@@ -11,23 +13,24 @@ interface BeakingNewsProps {
 }
 
 const BeakingNews: FC<BeakingNewsProps> = ({ label, data }) => {
-  const handleClick = (item) => {
+  const ref = React.useRef<ICarouselInstance>(null);
+  const handleClick = (item: any) => {
     navigate("NewsDetails", item);
   }
   return (
     <View>
-      {/* <Carousal
+      <Carousel
+        ref={ref}
+        width={sizes.width}
+        height={sizes.width / 2}
         data={data}
         renderItem={({ item }) => (
-          <BreakingNewsCard item={item} handleClick={handleClick} />
+          <BreakingNewsCard
+            item={item}
+            handleClick={handleClick}
+          />
         )}
-        firstItem={1}
-        inactiveSlideScale={0.86}
-        inactiveSlideOpacity={0.6}
-        sliderWidth={sizes.width}
-        itemWidth={sizes.width * 0.8}
-        slideStyle={{ display: "flex", alignItems: "center" }}
-      /> */}
+      />
     </View>
   )
 }
