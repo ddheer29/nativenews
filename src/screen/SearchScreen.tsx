@@ -1,11 +1,102 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { XMarkIcon } from 'react-native-heroicons/outline';
+import { heightPercentageToDP } from 'react-native-responsive-screen';
+import NewsSection from '../components/NewsSection';
+import { navigate } from '../utils/navigationUtils';
+import { colors } from '../utils/Theme';
+import { debounce } from 'lodash'
+import axios from 'axios';
+import { apiBaseUrl } from '../utils/config';
+import { apiKey } from '../utils/ApiKey';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 const SearchScreen = () => {
+  const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = async (query: string) => {
+    if (query && query.length > 2) {
+      setLoading(true);
+      setResults([]);
+      setSearchTerm(query);
+      try {
+        const res = await axios.get(`${apiBaseUrl}/everything?q=${query}&apiKey=${apiKey}`);
+        setLoading(false);
+        console.log("🚀 ~ handleSearch ~ res", res.data)
+        if (res.data && res.data.articles) {
+          setResults(res.data.articles)
+        }
+
+      } catch (error) {
+        console.log("🚀 ~ handleSearch ~ error:", error)
+      }
+    }
+  }
+
+  const handleTextDebounce = useCallback(debounce(handleSearch, 400), []);
+
   return (
-    <View>
-      <Text>SearchScreen</Text>
-    </View>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: 'white',
+      }}
+    >
+      <SafeAreaView />
+      <View
+        style={{
+          marginHorizontal: 16,
+          marginBottom: 12,
+          marginTop: 12,
+          flexDirection: 'row',
+          padding: 8,
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          borderRadius: 12,
+          backgroundColor: 'grey',
+        }}
+      >
+        <TextInput
+          onChangeText={handleTextDebounce}
+          placeholder='Search for your news'
+          placeholderTextColor={'gray'}
+          style={{
+            fontSize: 16,
+            color: colors.black,
+            width: '90%',
+            padding: 12,
+            paddingVertical: 4
+          }}
+        />
+        <TouchableOpacity onPress={() => navigate('Home')}>
+          <XMarkIcon size={25} color={'green'} strokeWidth={3} />
+        </TouchableOpacity>
+      </View>
+
+      <View
+        style={{
+          marginHorizontal: 16,
+          marginBottom: 16,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: RFValue(14),
+            fontWeight: 'semibold',
+            color: colors.darkCapsule,
+          }}
+        >{results.length} News for {searchTerm}</Text>
+      </View>
+      <ScrollView
+        contentContainerStyle={{
+          paddingBottom: heightPercentageToDP(5),
+        }}
+      >
+        <NewsSection label="Search Results" data={results} />
+      </ScrollView>
+    </View >
   );
 };
 
