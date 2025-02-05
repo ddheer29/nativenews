@@ -27,7 +27,7 @@ const Navigation = () => {
             } else if (route.name === 'SearchScreen') {
               iconName = 'search';
             } else if (route.name === 'SaveArticlesScreen') {
-              iconName = 'book-marked';
+              iconName = 'bookmarks-outline';
             } else if (route.name === 'DiscoverScreen') {
               iconName = 'earth';
             }
@@ -59,7 +59,13 @@ const Navigation = () => {
           headerShown: false,
         }}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
-        <Stack.Screen name="TabNavigator" component={TabNavigator} />
+        <Stack.Screen
+          name="TabNavigator"
+          component={TabNavigator}
+          options={{
+            animation: 'fade',
+          }}
+        />
         <Stack.Screen
           name="NewsSpecificScreen"
           component={NewsSpecificScreen}
