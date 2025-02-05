@@ -5,6 +5,7 @@ import { formatDate } from '../utils/helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { colors } from '../utils/Theme';
 import { BookmarkSquareIcon } from 'react-native-heroicons/outline';
+import { navigate } from '../utils/navigationUtils';
 
 interface NewsSectionProps {
   label: string;
@@ -15,6 +16,7 @@ const NewsSection: FC<NewsSectionProps> = ({ label, data }) => {
   const [urlList, setUrlList] = useState<string[]>([])
 
   const handleClick = (item: any) => {
+    navigate('NewsDetailsScreen', item)
   }
 
   const toggleBookmarkAndSave = (item: any, index: number) => {

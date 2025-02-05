@@ -10,6 +10,7 @@ import SearchScreen from '../screen/SearchScreen';
 import NewsSpecificScreen from '../screen/NewsSpecificScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {RFValue} from 'react-native-responsive-fontsize';
+import NewsDetailsScreen from '../screen/NewsDetailsScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -69,6 +70,13 @@ const Navigation = () => {
         <Stack.Screen
           name="NewsSpecificScreen"
           component={NewsSpecificScreen}
+          options={{
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="NewsDetailsScreen"
+          component={NewsDetailsScreen}
           options={{
             animation: 'slide_from_bottom',
           }}
