@@ -18,7 +18,7 @@ const NewsDetailsScreen: FC = () => {
   return (
     <>
       <View style={styles.headerContainer}>
-        <StatusBar barStyle={colorScheme === 'dark' ? 'light' : 'dark'} />
+        {/* <StatusBar barStyle={colorScheme === 'dark' ? 'light' : 'dark'} /> */}
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={() => goBack()}>
             <ChevronLeftIcon size={25} color="gray" strokeWidth={3} />
