@@ -11,6 +11,7 @@ import NewsSpecificScreen from '../screen/NewsSpecificScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {RFValue} from 'react-native-responsive-fontsize';
 import NewsDetailsScreen from '../screen/NewsDetailsScreen';
+import {colors} from '../utils/ThemeUtil';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -33,21 +34,45 @@ const Navigation = () => {
               iconName = 'earth';
             }
 
-            const customizeSize = RFValue(18);
+            const customizeSize = RFValue(20);
             return (
               <Ionicons
                 name={iconName}
                 size={customizeSize}
                 // style={{color: 'green'}}
-                color={focused ? 'green' : 'gray'}
+                color={focused ? colors.primary : 'gray'}
               />
             );
           },
         })}>
-        <Tab.Screen name="HomeScreen" component={HomeScreen} />
-        <Tab.Screen name="SearchScreen" component={SearchScreen} />
-        <Tab.Screen name="SaveArticlesScreen" component={SaveArticlesScreen} />
-        <Tab.Screen name="DiscoverScreen" component={DiscoverScreen} />
+        <Tab.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{
+            tabBarShowLabel: false,
+          }}
+        />
+        <Tab.Screen
+          name="SearchScreen"
+          component={SearchScreen}
+          options={{
+            tabBarShowLabel: false,
+          }}
+        />
+        <Tab.Screen
+          name="SaveArticlesScreen"
+          component={SaveArticlesScreen}
+          options={{
+            tabBarShowLabel: false,
+          }}
+        />
+        <Tab.Screen
+          name="DiscoverScreen"
+          component={DiscoverScreen}
+          options={{
+            tabBarShowLabel: false,
+          }}
+        />
       </Tab.Navigator>
     );
   };
