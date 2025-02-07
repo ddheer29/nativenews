@@ -4,7 +4,7 @@ import { XMarkIcon } from 'react-native-heroicons/outline';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
 import NewsSection from '../components/NewsSection';
 import { navigate } from '../utils/navigationUtils';
-import { colors } from '../utils/Theme';
+import { colors } from '../utils/ThemeUtil';
 import { debounce } from 'lodash'
 import axios from 'axios';
 import { apiBaseUrl } from '../utils/config';
@@ -55,7 +55,7 @@ const SearchScreen = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
           borderRadius: 12,
-          backgroundColor: 'grey',
+          backgroundColor: colors.lightGray3,
         }}
       >
         <TextInput
@@ -70,8 +70,20 @@ const SearchScreen = () => {
             paddingVertical: 4
           }}
         />
-        <TouchableOpacity onPress={() => navigate('Home')}>
-          <XMarkIcon size={25} color={'green'} strokeWidth={3} />
+        <TouchableOpacity onPress={() => navigate('HomeScreen')}
+          hitSlop={10}
+          style={{
+            backgroundColor: colors.darkgray,
+            position: 'absolute',
+            width: 24,
+            height: 24,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 20,
+            right: 8,
+          }}
+        >
+          <XMarkIcon size={15} color={colors.black} strokeWidth={3} />
         </TouchableOpacity>
       </View>
 
@@ -83,11 +95,11 @@ const SearchScreen = () => {
       >
         <Text
           style={{
-            fontSize: RFValue(14),
+            fontSize: RFValue(10),
             fontWeight: 'semibold',
-            color: colors.darkCapsule,
+            color: colors.darkgray1,
           }}
-        >{results.length} News for {searchTerm}</Text>
+        >{results.length} Result found for <Text style={{ fontWeight: 'bold' }}>{searchTerm}</Text></Text>
       </View>
       <ScrollView
         contentContainerStyle={{
