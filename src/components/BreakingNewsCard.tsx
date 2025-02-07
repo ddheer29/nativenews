@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import React, { FC } from 'react'
-import { sizes } from '../utils/Theme';
+import { sizes } from '../utils/ThemeUtil';
 
 interface BreakingNewsCardProps {
   item: any;

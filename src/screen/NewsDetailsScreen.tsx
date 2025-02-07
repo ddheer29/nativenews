@@ -1,6 +1,6 @@
 import { ActivityIndicator, StatusBar, StyleSheet, Text, TouchableOpacity, useColorScheme, View } from 'react-native'
 import React, { FC, useState } from 'react'
-import { colors, sizes } from '../utils/Theme'
+import { colors, sizes } from '../utils/ThemeUtil'
 import { BookmarkSquareIcon, ChevronLeftIcon, ShareIcon } from 'react-native-heroicons/outline'
 import { goBack } from '../utils/navigationUtils'
 import { useRoute } from '@react-navigation/native'

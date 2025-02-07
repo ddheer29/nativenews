@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { formatDate } from '../utils/helper';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { colors } from '../utils/Theme';
+import { colors } from '../utils/ThemeUtil';
 import { BookmarkSquareIcon } from 'react-native-heroicons/outline';
 import { navigate } from '../utils/navigationUtils';
 
