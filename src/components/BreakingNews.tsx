@@ -1,35 +1,73 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { FC } from 'react'
+import { FlatList, Image, ImageBackground, StyleSheet, Text, View } from 'react-native'
+import React, { FC, useRef, useState } from 'react'
 import BreakingNewsCard from './BreakingNewsCard';
-import { sizes } from '../utils/Theme';
+import { colors, sizes } from '../utils/ThemeUtil';
 import { navigate } from '../utils/navigationUtils';
-import Carousel, {
-  ICarouselInstance,
-} from "react-native-reanimated-carousel";
 
 interface BeakingNewsProps {
   label: string;
   data: any;
 }
 
+let currentIndex = 0;
+
 const BeakingNews: FC<BeakingNewsProps> = ({ label, data }) => {
-  const ref = React.useRef<ICarouselInstance>(null);
+  const scrollViewRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
   const handleClick = (item: any) => {
     navigate("NewsDetails", item);
   }
+
+  const renderItem = ({ item }: { item: any }) => {
+    console.log("🚀 ~ renderItem ~ item:", JSON.stringify(item, null, 2))
+    return (
+      <View style={{ width: sizes.width, height: sizes.width * 0.6, alignItems: 'center' }}>
+        <Image
+          source={{ uri: item?.urlToImage || "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" }}
+          style={{
+            width: '92%',
+            height: '100%',
+            borderRadius: 12,
+          }}
+          resizeMode="cover"
+        />
+        <View style={{ position: 'absolute', bottom: 0, padding: 10, width: '92%', backgroundColor: 'rgba(0,0,0,0.5)', borderBottomLeftRadius: 12, borderBottomRightRadius: 12 }}>
+          <Text
+            style={{ color: colors.lightGray, fontSize: 14, fontWeight: 'bold' }}
+            numberOfLines={2}
+          >{item?.title}</Text>
+          <Text
+            style={{ color: colors.white, fontSize: 12, marginTop: 4 }}
+            numberOfLines={2}
+          >
+            {item?.description !== null ? item?.description : item?.content}
+          </Text>
+        </View>
+      </View>
+    )
+  }
+
   return (
     <View>
-      <Carousel
-        ref={ref}
-        width={sizes.width}
-        height={sizes.width / 2}
+      <FlatList
         data={data}
-        renderItem={({ item }) => (
-          <BreakingNewsCard
-            item={item}
-            handleClick={handleClick}
-          />
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        pagingEnabled
+        bounces={false}
+        onScroll={e => {
+          let x = e?.nativeEvent?.contentOffset?.x;
+          x = Number((x / sizes.width).toFixed(0))
+          currentIndex = x
+          setActiveIndex(x)
+        }}
+        scrollEventThrottle={16}
+        getItemLayout={(item, index) => (
+          { length: sizes.width, offset: sizes.width * index, index }
         )}
+        contentContainerStyle={{ flexGrow: 1 }}
       />
     </View>
   )
