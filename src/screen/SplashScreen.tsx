@@ -17,12 +17,12 @@ const SplashScreen: FC = () => {
       Animated.sequence([
         Animated.timing(scale, {
           toValue: 1.8,
-          duration: 800,
+          duration: 1000,
           useNativeDriver: true,
         }),
         Animated.timing(scale, {
           toValue: 1,
-          duration: 600,
+          duration: 800,
           useNativeDriver: true,
         })
       ])
@@ -37,7 +37,7 @@ const SplashScreen: FC = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff' }}>
       <Animated.View style={{ transform: [{ scale }] }}>
-        <Text>SplashScreen</Text>
+        <Text>Native News</Text>
       </Animated.View>
     </View>
   );
