@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { FC } from 'react'
-import { colors } from '../utils/Theme';
+import { colors } from '../utils/ThemeUtil';
 
 interface MiniHeaderProps {
   label: string;
@@ -21,14 +21,14 @@ const MiniHeader: FC<MiniHeaderProps> = ({ label }) => {
         style={{
           fontWeight: 'bold',
           fontSize: 24,
-          color: colors.switchGreen
+          color: colors.primary
         }}
       >{label}</Text>
       <Text
         style={{
           fontWeight: 'bold',
           fontSize: 16,
-          color: colors.switchGreen
+          color: colors.primary
         }}
       >
         View all

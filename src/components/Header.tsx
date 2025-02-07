@@ -1,7 +1,8 @@
 import { StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { MagnifyingGlassIcon } from 'react-native-heroicons/outline'
-import { colors } from '../utils/Theme'
+import { colors } from '../utils/ThemeUtil'
+import { navigate } from '../utils/navigationUtils'
 
 const Header: React.FC = () => {
 
@@ -21,7 +22,7 @@ const Header: React.FC = () => {
           style={{
             fontWeight: 'bold',
             fontSize: 24,
-            color: colors.switchGreen,
+            color: colors.primary,
             textTransform: 'uppercase',
           }}
         >Header</Text>
@@ -34,13 +35,6 @@ const Header: React.FC = () => {
         }}
       >
         <Switch />
-        <TouchableOpacity>
-          <MagnifyingGlassIcon
-            size={25}
-            strokeWidth={2}
-            color={colors.switchGreen}
-          />
-        </TouchableOpacity>
       </View>
     </View>
   )

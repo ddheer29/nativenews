@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { View, ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useColorScheme } from 'react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { colors } from '../utils/ThemeUtil';
 
 interface category {
   id: number;
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   activeButton: {
-    backgroundColor: '#047857',
+    backgroundColor: colors.primary,
   },
   inactiveButton: {
     backgroundColor: 'rgba(0,0,0,0.1)',
