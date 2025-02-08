@@ -57,20 +57,24 @@ const DiscoverScreen: FC = () => {
         <View
           style={{
             paddingHorizontal: 16,
-            marginBottom: 24,
-            justifyContent: 'space-between'
+            marginBottom: 18,
+            justifyContent: 'space-between',
+            marginTop: 8,
           }}
         >
           <Text
             style={{
-              fontSize: 32,
+              fontWeight: 'bold',
+              fontSize: 24,
               color: theme.colors.primary,
+              textTransform: 'uppercase',
             }}
           >Discover</Text>
           <Text
             style={{
               fontSize: 16,
               color: theme.colors.secondary,
+              marginTop: 8,
             }}
           >News from all over the world 🌎</Text>
         </View>
@@ -79,7 +83,7 @@ const DiscoverScreen: FC = () => {
         <View
           style={{
             marginHorizontal: 16,
-            marginBottom: 32,
+            marginBottom: 20,
             flexDirection: 'row',
             padding: 8,
             paddingVertical: 12,
@@ -156,6 +160,9 @@ const DiscoverScreen: FC = () => {
         style={{
           marginBottom: 16,
           marginHorizontal: 16,
+          backgroundColor: theme.colors.card,
+          padding: 12,
+          borderRadius: 12,
         }}
         onPress={() => handleClick(item)}
       >
