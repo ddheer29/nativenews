@@ -66,7 +66,7 @@ const SearchScreen = () => {
           placeholderTextColor={'gray'}
           style={{
             fontSize: 16,
-            color: colors.black,
+            color: theme.colors.title,
             width: '90%',
             padding: 12,
             paddingVertical: 4

@@ -6,6 +6,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { colors } from '../utils/ThemeUtil';
 import { BookmarkSquareIcon } from 'react-native-heroicons/outline';
 import { navigate } from '../utils/navigationUtils';
+import { useTheme } from '../context/ThemeContext';
 
 interface NewsSectionProps {
   label: string;
@@ -13,6 +14,7 @@ interface NewsSectionProps {
 }
 
 const NewsSection: FC<NewsSectionProps> = ({ label, data }) => {
+  const { theme } = useTheme();
   const [urlList, setUrlList] = useState<string[]>([])
 
   const handleClick = (item: any) => {
@@ -30,6 +32,9 @@ const NewsSection: FC<NewsSectionProps> = ({ label, data }) => {
         style={{
           marginBottom: 16,
           marginHorizontal: 16,
+          backgroundColor: theme.colors.card,
+          padding: 12,
+          borderRadius: 12,
         }}
         onPress={() => handleClick(item)}
       >
@@ -67,7 +72,7 @@ const NewsSection: FC<NewsSectionProps> = ({ label, data }) => {
             <Text
               style={{
                 fontSize: RFValue(12),
-                color: colors.darkGray141,
+                color: theme.colors.text,
               }}
             >
               {item?.author?.length > 20
@@ -80,7 +85,7 @@ const NewsSection: FC<NewsSectionProps> = ({ label, data }) => {
               style={{
                 fontSize: hp(1.7),
                 fontWeight: 'bold',
-                color: colors.black,
+                color: theme.colors.title,
                 textTransform: 'capitalize',
                 maxWidth: '90%',
               }}
@@ -94,7 +99,7 @@ const NewsSection: FC<NewsSectionProps> = ({ label, data }) => {
             <Text
               style={{
                 fontSize: RFValue(10),
-                color: colors.darkGray141,
+                color: theme.colors.contentDescription,
               }}
             >
               {formatDate(item.publishedAt)}
@@ -127,9 +132,6 @@ const NewsSection: FC<NewsSectionProps> = ({ label, data }) => {
 
   return (
     <View
-      style={{
-        backgroundColor: '#fff',
-      }}
     >
       <FlatList
         data={data}
