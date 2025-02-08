@@ -13,8 +13,10 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { BookmarkSquareIcon } from 'react-native-heroicons/outline';
 import { navigate } from '../utils/navigationUtils';
 import { formatDate } from '../utils/helper';
+import { useTheme } from '../context/ThemeContext';
 
 const HomeScreen: FC = () => {
+  const { theme } = useTheme();
   const [breakingNews, setBreakingNews] = useState<any[]>([]);
   const [recommandedNews, setRecommandedNews] = useState<any[]>([]);
   const [breakingNewsLoading, setBreakingNewsLoading] = useState<boolean>(false);
@@ -90,6 +92,9 @@ const HomeScreen: FC = () => {
         style={{
           marginBottom: 16,
           marginHorizontal: 16,
+          backgroundColor: theme.colors.card,
+          padding: 12,
+          borderRadius: 12,
         }}
         onPress={() => handleClick(item)}
       >
@@ -127,7 +132,7 @@ const HomeScreen: FC = () => {
             <Text
               style={{
                 fontSize: RFValue(12),
-                color: colors.darkGray141,
+                color: theme.colors.text,
               }}
             >
               {item?.author?.length > 20
@@ -140,7 +145,7 @@ const HomeScreen: FC = () => {
               style={{
                 fontSize: hp(1.7),
                 fontWeight: 'bold',
-                color: colors.black,
+                color: theme.colors.title,
                 textTransform: 'capitalize',
                 maxWidth: '90%',
               }}
@@ -154,7 +159,7 @@ const HomeScreen: FC = () => {
             <Text
               style={{
                 fontSize: RFValue(10),
-                color: colors.darkGray141,
+                color: theme.colors.contentDescription,
               }}
             >
               {formatDate(item.publishedAt)}
@@ -222,7 +227,7 @@ const HomeScreen: FC = () => {
 
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
       <StatusBar />
       <FlatList
         data={recommandedNews}
@@ -234,9 +239,9 @@ const HomeScreen: FC = () => {
           <RefreshControl
             refreshing={refreshing}
             onRefresh={fetchNews}
-          // colors={['#ff6600', '#ff3300']} // Loader colors for Android
-          // tintColor={'#ff6600'} // Loader color for iOS
-          // progressBackgroundColor={'#fff'}
+            colors={[theme.colors.primary, theme.colors.notification]} // Primary and notification color for Android
+            tintColor={theme.colors.primary} // Primary color for iOS
+            progressBackgroundColor={theme.colors.card} // Background color to match the theme
           />
         }
       />

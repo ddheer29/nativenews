@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { FC } from 'react'
-import { colors } from '../utils/ThemeUtil';
+import { useTheme } from '../context/ThemeContext';
 
 interface MiniHeaderProps {
   label: string;
 }
 
 const MiniHeader: FC<MiniHeaderProps> = ({ label }) => {
+  const { theme } = useTheme();
   return (
     <View
       style={{
@@ -21,14 +22,14 @@ const MiniHeader: FC<MiniHeaderProps> = ({ label }) => {
         style={{
           fontWeight: 'bold',
           fontSize: 24,
-          color: colors.primary
+          color: theme.colors.secondary
         }}
       >{label}</Text>
       <Text
         style={{
           fontWeight: 'bold',
           fontSize: 16,
-          color: colors.primary
+          color: theme.colors.secondary
         }}
       >
         View all

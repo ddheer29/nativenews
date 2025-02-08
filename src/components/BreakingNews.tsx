@@ -3,6 +3,7 @@ import React, { FC, useRef, useState } from 'react'
 import BreakingNewsCard from './BreakingNewsCard';
 import { colors, sizes } from '../utils/ThemeUtil';
 import { navigate } from '../utils/navigationUtils';
+import { useTheme } from '../context/ThemeContext';
 
 interface BeakingNewsProps {
   label: string;
@@ -12,6 +13,7 @@ interface BeakingNewsProps {
 let currentIndex = 0;
 
 const BeakingNews: FC<BeakingNewsProps> = ({ label, data }) => {
+  const { theme } = useTheme();
   const scrollViewRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const handleClick = (item: any) => {
@@ -33,11 +35,11 @@ const BeakingNews: FC<BeakingNewsProps> = ({ label, data }) => {
         />
         <View style={{ position: 'absolute', bottom: 0, padding: 10, width: '92%', backgroundColor: 'rgba(0,0,0,0.5)', borderBottomLeftRadius: 12, borderBottomRightRadius: 12 }}>
           <Text
-            style={{ color: colors.lightGray, fontSize: 14, fontWeight: 'bold' }}
+            style={{ color: theme.colors.title, fontSize: 14, fontWeight: 'bold' }}
             numberOfLines={2}
           >{item?.title}</Text>
           <Text
-            style={{ color: colors.white, fontSize: 12, marginTop: 4 }}
+            style={{ color: theme.colors.text, fontSize: 12, marginTop: 4 }}
             numberOfLines={2}
           >
             {item?.description !== null ? item?.description : item?.content}

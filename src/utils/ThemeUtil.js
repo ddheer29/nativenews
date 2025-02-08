@@ -3,6 +3,46 @@ const {width, height} = Dimensions.get('window');
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
 
+export const lightTheme = {
+  dark: false,
+  colors: {
+    primary: '#1E88E5', // Vibrant Blue for accents & buttons
+    secondary: '#FFA726',
+    background: '#FFFFFF', // Pure white for readability
+    text: '#212121', // Dark gray for main text (better readability than pure black)
+    title: '#000000', // Black for headlines
+    contentDescription: '#666666', // Medium gray for subtitles/less important text
+    card: '#F5F5F5', // Light gray for news article backgrounds
+    border: '#DADADA', // Subtle separator color
+    searchBar: '#F1F3F4', // Light gray background for search bar
+    header: '#FFFFFF', // White for header navigation
+    notification: '#E53935', // Red for alerts & notifications
+  },
+  fonts: {
+    regular: 'System',
+  },
+};
+
+export const darkTheme = {
+  dark: true,
+  colors: {
+    primary: '#BB86FC', // Soft Purple for accents & buttons
+    secondary: '#64D8CB',
+    background: '#121212', // Deep black for OLED-friendly dark mode
+    text: '#E0E0E0', // Light gray for main text (not pure white to reduce strain)
+    title: '#FFFFFF', // Pure white for headlines
+    contentDescription: '#B0B0B0', // Lighter gray for subtitles/less important text
+    card: '#1E1E1E', // Dark gray for news article backgrounds
+    border: '#333333', // Subtle separator color
+    searchBar: '#2C2C2C', // Dark gray background for search bar
+    header: '#1E1E1E', // Same as card to blend seamlessly
+    notification: '#FF5252', // Bright red for alerts & notifications
+  },
+  fonts: {
+    regular: 'System',
+  },
+};
+
 export const sizes = {
   // Window dimensions
   width,

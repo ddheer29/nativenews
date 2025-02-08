@@ -7,16 +7,17 @@ import HomeScreen from '../screen/HomeScreen';
 import DiscoverScreen from '../screen/DiscoverScreen';
 import SaveArticlesScreen from '../screen/SaveArticlesScreen';
 import SearchScreen from '../screen/SearchScreen';
-import NewsSpecificScreen from '../screen/NewsSpecificScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {RFValue} from 'react-native-responsive-fontsize';
 import NewsDetailsScreen from '../screen/NewsDetailsScreen';
-import {colors} from '../utils/ThemeUtil';
+import {useTheme} from '../context/ThemeContext';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
+  const {theme} = useTheme();
+
   const TabNavigator = () => {
     return (
       <Tab.Navigator
@@ -40,7 +41,7 @@ const Navigation = () => {
                 name={iconName}
                 size={customizeSize}
                 // style={{color: 'green'}}
-                color={focused ? colors.primary : 'gray'}
+                color={focused ? theme.colors.primary : 'gray'}
               />
             );
           },
@@ -78,7 +79,7 @@ const Navigation = () => {
   };
 
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer ref={navigationRef} theme={theme}>
       <Stack.Navigator
         initialRouteName="SplashScreen"
         screenOptions={{
@@ -93,17 +94,15 @@ const Navigation = () => {
           }}
         />
         <Stack.Screen
-          name="NewsSpecificScreen"
-          component={NewsSpecificScreen}
-          options={{
-            animation: 'slide_from_bottom',
-          }}
-        />
-        <Stack.Screen
           name="NewsDetailsScreen"
           component={NewsDetailsScreen}
           options={{
-            animation: 'slide_from_bottom',
+            headerLargeTitle: true,
+            headerLargeTitleStyle: {
+              fontFamily: theme.fonts.regular,
+              color: theme.colors.text,
+            },
+            headerStyle: {backgroundColor: theme.colors.card},
           }}
         />
       </Stack.Navigator>

@@ -10,8 +10,10 @@ import axios from 'axios';
 import { apiBaseUrl } from '../utils/config';
 import { apiKey } from '../utils/ApiKey';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { useTheme } from '../context/ThemeContext';
 
 const SearchScreen = () => {
+  const { theme } = useTheme();
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -41,7 +43,7 @@ const SearchScreen = () => {
     <View
       style={{
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: theme.background,
       }}
     >
       <SafeAreaView />
@@ -55,7 +57,7 @@ const SearchScreen = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
           borderRadius: 12,
-          backgroundColor: colors.lightGray3,
+          backgroundColor: theme.colors.border,
         }}
       >
         <TextInput

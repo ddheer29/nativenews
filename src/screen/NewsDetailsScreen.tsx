@@ -1,13 +1,14 @@
 import { ActivityIndicator, StatusBar, StyleSheet, Text, TouchableOpacity, useColorScheme, View } from 'react-native'
 import React, { FC, useState } from 'react'
-import { colors, sizes } from '../utils/ThemeUtil'
+import { colors, isIOS, sizes } from '../utils/ThemeUtil'
 import { BookmarkSquareIcon, ChevronLeftIcon, ShareIcon } from 'react-native-heroicons/outline'
 import { goBack } from '../utils/navigationUtils'
 import { useRoute } from '@react-navigation/native'
 import { WebView } from 'react-native-webview';
+import { useTheme } from '../context/ThemeContext'
 
 const NewsDetailsScreen: FC = () => {
-  const colorScheme = useColorScheme();
+  const { theme } = useTheme();
   const { params: item } = useRoute();
   const [visible, setVisible] = useState(false);
   const [isBookMarked, setIsBookMarked] = useState(false);
@@ -17,18 +18,18 @@ const NewsDetailsScreen: FC = () => {
 
   return (
     <>
-      <View style={styles.headerContainer}>
+      <View style={[styles.headerContainer, { backgroundColor: theme.background }]}>
         {/* <StatusBar barStyle={colorScheme === 'dark' ? 'light' : 'dark'} /> */}
-        <View style={styles.iconContainer}>
+        <View style={[styles.iconContainer, { backgroundColor: theme.colors.searchBar }]}>
           <TouchableOpacity onPress={() => goBack()}>
             <ChevronLeftIcon size={25} color="gray" strokeWidth={3} />
           </TouchableOpacity>
         </View>
-        <View style={styles.iconGroup}>
-          <TouchableOpacity style={styles.iconContainer}>
+        <View style={[styles.iconGroup]}>
+          <TouchableOpacity style={[styles.iconContainer, { backgroundColor: theme.colors.searchBar }]}>
             <ShareIcon color="gray" size={25} strokeWidth={3} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconContainer} onPress={toggleBookmarkAndSave}>
+          <TouchableOpacity style={[styles.iconContainer, { backgroundColor: theme.colors.searchBar }]} onPress={toggleBookmarkAndSave}>
             <BookmarkSquareIcon color={isBookMarked ? 'green' : 'gray'} size={25} strokeWidth={3} />
           </TouchableOpacity>
         </View>
@@ -64,14 +65,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 16, // Equivalent to `px-4`
-    paddingTop: 40, // Equivalent to `pt-10`
+    paddingTop: isIOS ? 60 : 30, // Equivalent to `pt-10`
     paddingBottom: 16, // Equivalent to `pb-4`
-    backgroundColor: 'white',
   },
   iconContainer: {
-    backgroundColor: '#F3F4F6', // Equivalent to `bg-gray-100`
-    padding: 8, // Equivalent to `p-2`
-    borderRadius: 999, // Equivalent to `rounded-full`
+    // backgroundColor: '#F3F4F6',
+    padding: 8,
+    borderRadius: 999,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -79,8 +79,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 999, // Equivalent to `rounded-full`
-    backgroundColor: 'white',
-    gap: 12, // Equivalent to `space-x-3`
+    borderRadius: 999,
+    gap: 12,
   },
 })

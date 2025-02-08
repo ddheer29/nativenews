@@ -1,11 +1,9 @@
 import { StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { MagnifyingGlassIcon } from 'react-native-heroicons/outline'
-import { colors } from '../utils/ThemeUtil'
-import { navigate } from '../utils/navigationUtils'
+import { useTheme } from '../context/ThemeContext'
 
 const Header: React.FC = () => {
-
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <View
@@ -22,7 +20,7 @@ const Header: React.FC = () => {
           style={{
             fontWeight: 'bold',
             fontSize: 24,
-            color: colors.primary,
+            color: theme.colors.primary,
             textTransform: 'uppercase',
           }}
         >Header</Text>
@@ -34,7 +32,15 @@ const Header: React.FC = () => {
           alignItems: 'center',
         }}
       >
-        <Switch />
+        <Switch
+          value={theme.dark}
+          onValueChange={toggleTheme}
+          thumbColor={theme.colors.primary}
+          trackColor={{
+            false: '#DADADA',
+            true: '#333333',
+          }}
+        />
       </View>
     </View>
   )

@@ -1,15 +1,16 @@
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
 import React, { FC } from 'react'
+import { useTheme } from '../context/ThemeContext';
 
 interface LoadingProps {
   size?: string;
-  color?: string;
 }
 
-const Loading: FC<LoadingProps> = ({ size, color }) => {
+const Loading: FC<LoadingProps> = ({ size }) => {
+  const { theme } = useTheme();
   return (
-    <View className="flex-1 justify-center items-center">
-      <ActivityIndicator size={size} color={color} />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <ActivityIndicator size={size} color={theme.colors.primary} />
     </View>
   )
 }

@@ -2,9 +2,7 @@ import { FlatList, Image, RefreshControl, SafeAreaView, ScrollView, StatusBar, S
 import React, { FC, useEffect, useState } from 'react';
 import { BookmarkSquareIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline';
 import { navigate } from '../utils/navigationUtils';
-import Loading from '../components/Loading';
 import { colors, sizes } from '../utils/ThemeUtil';
-import NewsSection from '../components/NewsSection';
 import axios from 'axios';
 import { apiBaseUrl } from '../utils/config';
 import { apiKey } from '../utils/ApiKey';
@@ -13,9 +11,10 @@ import { categories } from '../utils/constants';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { formatDate } from '../utils/helper';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { useTheme } from '../context/ThemeContext';
 
 const DiscoverScreen: FC = () => {
-
+  const { theme } = useTheme();
   const [activeCategory, setActiveCategory] = useState<string>("business");
   const [discovernews, setDiscovernews] = useState([]);
   const [discoverLoading, setDiscoverLoading] = useState<Boolean>(false);
@@ -65,12 +64,13 @@ const DiscoverScreen: FC = () => {
           <Text
             style={{
               fontSize: 32,
+              color: theme.colors.primary,
             }}
           >Discover</Text>
           <Text
             style={{
               fontSize: 16,
-              color: colors.darkCapsule
+              color: theme.colors.secondary,
             }}
           >News from all over the world 🌎</Text>
         </View>
@@ -131,7 +131,7 @@ const DiscoverScreen: FC = () => {
           <Text
             style={{
               fontSize: 20,
-              color: 'black',
+              color: theme.colors.secondary,
             }}
           >
             Discover
@@ -139,7 +139,7 @@ const DiscoverScreen: FC = () => {
           <Text
             style={{
               fontSize: 16,
-              color: colors.primary,
+              color: theme.colors.secondary,
             }}
           >
             View All
@@ -193,7 +193,7 @@ const DiscoverScreen: FC = () => {
             <Text
               style={{
                 fontSize: RFValue(12),
-                color: colors.darkGray141,
+                color: theme.colors.text,
               }}
             >
               {item?.author?.length > 20
@@ -206,7 +206,7 @@ const DiscoverScreen: FC = () => {
               style={{
                 fontSize: hp(1.7),
                 fontWeight: 'bold',
-                color: colors.black,
+                color: theme.colors.title,
                 textTransform: 'capitalize',
                 maxWidth: '90%',
               }}
@@ -220,7 +220,7 @@ const DiscoverScreen: FC = () => {
             <Text
               style={{
                 fontSize: RFValue(10),
-                color: colors.darkGray141,
+                color: theme.colors.contentDescription,
               }}
             >
               {formatDate(item.publishedAt)}
@@ -291,7 +291,7 @@ const DiscoverScreen: FC = () => {
       style={{
         flex: 1,
         paddingTop: 32,
-        backgroundColor: '#fff',
+        backgroundColor: theme.background,
       }}
     >
       <StatusBar />
@@ -305,6 +305,9 @@ const DiscoverScreen: FC = () => {
           <RefreshControl
             refreshing={refreshing}
             onRefresh={handleRefresh}
+            colors={[theme.colors.primary, theme.colors.notification]}
+            tintColor={theme.colors.primary}
+            progressBackgroundColor={theme.colors.card}
           />
         }
       />
