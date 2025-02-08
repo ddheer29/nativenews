@@ -85,7 +85,7 @@ const DiscoverScreen: FC = () => {
             paddingVertical: 12,
             justifyContent: 'space-between',
             alignItems: 'center',
-            backgroundColor: colors.lightGray8,
+            backgroundColor: theme.colors.searchBar,
             borderRadius: 999
           }}
         >

@@ -3,6 +3,7 @@ import { View, ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-nati
 import { useColorScheme } from 'react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { colors } from '../utils/ThemeUtil';
+import { useTheme } from '../context/ThemeContext';
 
 interface category {
   id: number;
@@ -16,9 +17,7 @@ interface CategoriesCardProps {
 }
 
 const CategoriesCard: FC<CategoriesCardProps> = ({ categories, activeCategory, handleCategoryChange }) => {
-  const colorScheme = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
-
+  const { theme } = useTheme();
   return (
     <View>
       <ScrollView
@@ -38,13 +37,13 @@ const CategoriesCard: FC<CategoriesCardProps> = ({ categories, activeCategory, h
               <View
                 style={[
                   styles.categoryContainer,
-                  isActive ? styles.activeButton : isDarkMode ? styles.darkButton : styles.inactiveButton,
+                  isActive ? [{ backgroundColor: theme.colors.primary }] : [{ backgroundColor: theme.colors.border }],
                 ]}
               >
                 <Text
                   style={[
                     styles.categoryText,
-                    isActive ? styles.activeText : isDarkMode ? styles.darkText : styles.inactiveText,
+                    isActive ? [{ color: '#fff', fontWeight: 'bold' }] : [{ color: theme.colors.text }],
                   ]}
                 >
                   {category.title}
@@ -54,7 +53,7 @@ const CategoriesCard: FC<CategoriesCardProps> = ({ categories, activeCategory, h
           );
         })}
       </ScrollView>
-    </View>
+    </View >
   );
 };
 

@@ -1,4 +1,4 @@
-import { FlatList, Image, ImageBackground, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { FC, useRef, useState } from 'react'
 import BreakingNewsCard from './BreakingNewsCard';
 import { colors, sizes } from '../utils/ThemeUtil';
@@ -17,13 +17,14 @@ const BeakingNews: FC<BeakingNewsProps> = ({ label, data }) => {
   const scrollViewRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const handleClick = (item: any) => {
-    navigate("NewsDetails", item);
+    navigate("NewsDetailsScreen", item);
   }
 
   const renderItem = ({ item }: { item: any }) => {
     console.log("🚀 ~ renderItem ~ item:", JSON.stringify(item, null, 2))
     return (
-      <View style={{ width: sizes.width, height: sizes.width * 0.6, alignItems: 'center' }}>
+      <TouchableOpacity style={{ width: sizes.width, height: sizes.width * 0.6, alignItems: 'center' }}
+        onPress={() => handleClick(item)}>
         <Image
           source={{ uri: item?.urlToImage || "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" }}
           style={{
@@ -45,7 +46,7 @@ const BeakingNews: FC<BeakingNewsProps> = ({ label, data }) => {
             {item?.description !== null ? item?.description : item?.content}
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 
@@ -53,6 +54,7 @@ const BeakingNews: FC<BeakingNewsProps> = ({ label, data }) => {
     <View>
       <FlatList
         data={data}
+        ref={scrollViewRef}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
         horizontal

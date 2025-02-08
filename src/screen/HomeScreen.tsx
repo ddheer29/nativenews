@@ -28,7 +28,6 @@ const HomeScreen: FC = () => {
   const getBreakingNews = async () => {
     try {
       setBreakingNewsLoading(true);
-      console.log(`${apiBaseUrl}/top-headlines?country=in&apiKey=${apiKey}`);
       const res = await axios.get(
         `${apiBaseUrl}/top-headlines?country=us&apiKey=${apiKey}`,
       );
@@ -45,7 +44,6 @@ const HomeScreen: FC = () => {
       const res = await axios.get(
         `${apiBaseUrl}/top-headlines?country=us&category=business&apiKey=${apiKey}`,
       );
-      console.log("🚀 ~ getRecommandedNews ~ res:", JSON.stringify(res.data, null, 2))
       setrecommendedNewsLoading(false);
       setRecommandedNews(res.data.articles);
     } catch (error) {
@@ -63,7 +61,6 @@ const HomeScreen: FC = () => {
   }
 
 
-  // render funcitons
   const renderHeader = () => {
     return (
       <>

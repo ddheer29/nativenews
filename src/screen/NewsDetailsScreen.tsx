@@ -20,11 +20,9 @@ const NewsDetailsScreen: FC = () => {
     <>
       <View style={[styles.headerContainer, { backgroundColor: theme.background }]}>
         {/* <StatusBar barStyle={colorScheme === 'dark' ? 'light' : 'dark'} /> */}
-        <View style={[styles.iconContainer, { backgroundColor: theme.colors.searchBar }]}>
-          <TouchableOpacity onPress={() => goBack()}>
-            <ChevronLeftIcon size={25} color="gray" strokeWidth={3} />
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity style={[styles.iconContainer, { backgroundColor: theme.colors.searchBar }]} onPress={() => goBack()}>
+          <ChevronLeftIcon size={25} color="gray" strokeWidth={3} />
+        </TouchableOpacity>
         <View style={[styles.iconGroup]}>
           <TouchableOpacity style={[styles.iconContainer, { backgroundColor: theme.colors.searchBar }]}>
             <ShareIcon color="gray" size={25} strokeWidth={3} />
