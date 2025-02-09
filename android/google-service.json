@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "949568530580",
+    "project_id": "nativenews-81454",
+    "storage_bucket": "nativenews-81454.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949568530580:android:257e24b8660c11bccf6c81",
+        "android_client_info": {
+          "package_name": "com.nativenews"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALT0XVJTrou3rk67Ung-D9gh8MlthSgJM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
