@@ -82,7 +82,7 @@ const HomeScreen: FC = () => {
     )
   }
 
-  const renderItem = ({ item, index }) => {
+  const renderItem = ({ item, index }: { item: any, index: number }) => {
     return (
       <TouchableOpacity
         key={index}

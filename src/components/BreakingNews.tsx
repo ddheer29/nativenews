@@ -1,7 +1,6 @@
 import { FlatList, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { FC, useRef, useState } from 'react'
-import BreakingNewsCard from './BreakingNewsCard';
-import { colors, sizes } from '../utils/ThemeUtil';
+import { sizes } from '../utils/ThemeUtil';
 import { navigate } from '../utils/navigationUtils';
 import { useTheme } from '../context/ThemeContext';
 
@@ -10,7 +9,7 @@ interface BeakingNewsProps {
   data: any;
 }
 
-let currentIndex = 0;
+let currentIndex: number = 0;
 
 const BeakingNews: FC<BeakingNewsProps> = ({ label, data }) => {
   const { theme } = useTheme();
@@ -21,7 +20,6 @@ const BeakingNews: FC<BeakingNewsProps> = ({ label, data }) => {
   }
 
   const renderItem = ({ item }: { item: any }) => {
-    console.log("🚀 ~ renderItem ~ item:", JSON.stringify(item, null, 2))
     return (
       <TouchableOpacity style={{ width: sizes.width, height: sizes.width * 0.6, alignItems: 'center' }}
         onPress={() => handleClick(item)}>
