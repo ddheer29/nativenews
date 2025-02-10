@@ -225,7 +225,7 @@ const HomeScreen: FC = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
-      <StatusBar />
+      <StatusBar barStyle={{ colors: theme.colors.text }} />
       <FlatList
         data={recommandedNews}
         keyExtractor={(item, index) => index.toString()}
