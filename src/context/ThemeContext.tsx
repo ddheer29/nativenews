@@ -6,10 +6,12 @@ const ThemeContext = createContext<any>(null);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState(lightTheme);
+  const [currentThemeMode, setCurrentThemeMode] = useState('light');
 
   useEffect(() => {
     const loadTheme = async () => {
       const storedTheme = await AsyncStorage.getItem('theme');
+      setCurrentThemeMode(storedTheme || 'light');
       setTheme(storedTheme === 'dark' ? darkTheme : lightTheme);
     };
     loadTheme();
@@ -22,7 +24,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, currentThemeMode }}>
       {children}
     </ThemeContext.Provider>
   );

@@ -11,6 +11,7 @@ import { apiBaseUrl } from '../utils/config';
 import { apiKey } from '../utils/ApiKey';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from '../context/ThemeContext';
+import NewsListSkeletion from '../components/skeletion/NewsListSkeletion';
 
 const SearchScreen = () => {
   const { theme } = useTheme();
@@ -25,7 +26,6 @@ const SearchScreen = () => {
       setSearchTerm(query);
       try {
         const res = await axios.get(`${apiBaseUrl}/everything?q=${query}&apiKey=${apiKey}`);
-        setLoading(false);
         console.log("🚀 ~ handleSearch ~ res", res.data)
         if (res.data && res.data.articles) {
           setResults(res.data.articles)
@@ -33,6 +33,8 @@ const SearchScreen = () => {
 
       } catch (error) {
         console.log("🚀 ~ handleSearch ~ error:", error)
+      } finally {
+        setLoading(false);
       }
     }
   }
@@ -108,7 +110,13 @@ const SearchScreen = () => {
           paddingBottom: heightPercentageToDP(5),
         }}
       >
-        <NewsSection label="Search Results" data={results} />
+        {
+          loading ? (
+            <NewsListSkeletion />
+          ) : (
+            <NewsSection label="Search Results" data={results} />
+          )
+        }
       </ScrollView>
     </View >
   );
