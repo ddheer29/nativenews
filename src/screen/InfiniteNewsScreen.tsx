@@ -17,13 +17,13 @@ const InfiniteNewsScreen = () => {
   }
 
   useEffect(() => {
-
+    setNews(newsData.articles)
   }, [])
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
       <FlatList
-        data={newsData.articles}
+        data={news}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
         pagingEnabled
