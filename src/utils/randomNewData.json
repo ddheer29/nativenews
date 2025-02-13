@@ -1,0 +1,114 @@
+{
+    "articles": [
+        {
+            "title": "Tech Giant Announces AI Breakthrough in Voice Recognition",
+            "description": "A leading tech company has unveiled a new AI-powered voice recognition system that promises near-human accuracy.",
+            "url": "https://example.com/tech-ai-voice",
+            "urlToImage": "https://example.com/images/ai-voice.jpg",
+            "publishedAt": "2025-02-11T08:30:00Z",
+            "source": {
+                "name": "Tech Daily",
+                "url": "https://techdaily.com"
+            }
+        },
+        {
+            "title": "Stock Market Surges as Economic Growth Exceeds Expectations",
+            "description": "The stock market saw significant gains after new economic data showed higher-than-expected growth in the last quarter.",
+            "url": "https://example.com/stock-market-growth",
+            "urlToImage": "https://example.com/images/stock-market.jpg",
+            "publishedAt": "2025-02-11T09:15:00Z",
+            "source": {
+                "name": "Finance Times",
+                "url": "https://financetimes.com"
+            }
+        },
+        {
+            "title": "Space Agency Confirms Plans for New Lunar Mission in 2027",
+            "description": "The national space agency has announced a new mission to establish a long-term research station on the moon by 2027.",
+            "url": "https://example.com/lunar-mission",
+            "urlToImage": "https://example.com/images/lunar-mission.jpg",
+            "publishedAt": "2025-02-11T10:00:00Z",
+            "source": {
+                "name": "Space Explorer",
+                "url": "https://spaceexplorer.com"
+            }
+        },
+        {
+            "title": "New Study Links Mediterranean Diet to Improved Heart Health",
+            "description": "A recent study has found that people who follow the Mediterranean diet have a significantly lower risk of heart disease.",
+            "url": "https://example.com/mediterranean-diet",
+            "urlToImage": "https://example.com/images/mediterranean-diet.jpg",
+            "publishedAt": "2025-02-11T11:20:00Z",
+            "source": {
+                "name": "Health Weekly",
+                "url": "https://healthweekly.com"
+            }
+        },
+        {
+            "title": "Blockbuster Movie Breaks Box Office Records on Opening Weekend",
+            "description": "The latest action-packed blockbuster has shattered box office records, earning over $500 million in its first weekend.",
+            "url": "https://example.com/movie-boxoffice",
+            "urlToImage": "https://example.com/images/movie-boxoffice.jpg",
+            "publishedAt": "2025-02-11T12:45:00Z",
+            "source": {
+                "name": "Entertainment Buzz",
+                "url": "https://entertainmentbuzz.com"
+            }
+        },
+        {
+            "title": "Electric Car Company Launches New Affordable Model",
+            "description": "A leading electric car manufacturer has announced a new, budget-friendly model that aims to make EVs more accessible.",
+            "url": "https://example.com/electric-car-launch",
+            "urlToImage": "https://example.com/images/electric-car.jpg",
+            "publishedAt": "2025-02-11T13:10:00Z",
+            "source": {
+                "name": "Auto World",
+                "url": "https://autoworld.com"
+            }
+        },
+        {
+            "title": "Major Cybersecurity Breach Exposes Millions of User Data",
+            "description": "A massive data breach at a global company has compromised the personal information of millions of users worldwide.",
+            "url": "https://example.com/cybersecurity-breach",
+            "urlToImage": "https://example.com/images/cybersecurity-breach.jpg",
+            "publishedAt": "2025-02-11T14:30:00Z",
+            "source": {
+                "name": "Cyber News",
+                "url": "https://cybernews.com"
+            }
+        },
+        {
+            "title": "Breakthrough Cancer Treatment Shows Promising Results",
+            "description": "A new cancer treatment has demonstrated significant success in early-stage clinical trials, bringing hope to millions.",
+            "url": "https://example.com/cancer-treatment",
+            "urlToImage": "https://example.com/images/cancer-treatment.jpg",
+            "publishedAt": "2025-02-11T15:00:00Z",
+            "source": {
+                "name": "Medical Journal",
+                "url": "https://medicaljournal.com"
+            }
+        },
+        {
+            "title": "Global Climate Summit Reaches Historic Agreement",
+            "description": "World leaders have signed a groundbreaking agreement to cut carbon emissions and combat climate change.",
+            "url": "https://example.com/climate-summit",
+            "urlToImage": "https://example.com/images/climate-summit.jpg",
+            "publishedAt": "2025-02-11T16:20:00Z",
+            "source": {
+                "name": "Eco Watch",
+                "url": "https://ecowatch.com"
+            }
+        },
+        {
+            "title": "Scientists Discover Earth-like Planet in Habitable Zone",
+            "description": "Astronomers have identified an Earth-like exoplanet within the habitable zone, raising hopes for potential extraterrestrial life.",
+            "url": "https://example.com/exoplanet-discovery",
+            "urlToImage": "https://example.com/images/exoplanet.jpg",
+            "publishedAt": "2025-02-11T17:45:00Z",
+            "source": {
+                "name": "Science Today",
+                "url": "https://sciencetoday.com"
+            }
+        }
+    ]
+}

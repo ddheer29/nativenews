@@ -1,29 +1,30 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SplashScreen from '../screen/SplashScreen';
-import {NavigationContainer} from '@react-navigation/native';
-import {navigationRef} from '../utils/navigationUtils';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { navigationRef } from '../utils/navigationUtils';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screen/HomeScreen';
 import DiscoverScreen from '../screen/DiscoverScreen';
 import SaveArticlesScreen from '../screen/SaveArticlesScreen';
 import SearchScreen from '../screen/SearchScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {RFValue} from 'react-native-responsive-fontsize';
+import { RFValue } from 'react-native-responsive-fontsize';
 import NewsDetailsScreen from '../screen/NewsDetailsScreen';
-import {useTheme} from '../context/ThemeContext';
+import { useTheme } from '../context/ThemeContext';
+import InfiniteNewsScreen from '../screen/InfiniteNewsScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
-  const {theme} = useTheme();
+  const { theme } = useTheme();
 
   const TabNavigator = () => {
     return (
       <Tab.Navigator
-        screenOptions={({route}) => ({
+        screenOptions={({ route }) => ({
           headerShown: false,
-          tabBarIcon: ({focused}) => {
+          tabBarIcon: ({ focused }) => {
             let iconName;
             if (route.name === 'HomeScreen') {
               iconName = 'home';
@@ -33,6 +34,8 @@ const Navigation = () => {
               iconName = 'bookmarks-outline';
             } else if (route.name === 'DiscoverScreen') {
               iconName = 'earth';
+            } else if (route.name === 'InfiniteNewsScreen') {
+              iconName = 'newspaper-outline';
             }
 
             const customizeSize = RFValue(20);
@@ -56,6 +59,13 @@ const Navigation = () => {
         <Tab.Screen
           name="SearchScreen"
           component={SearchScreen}
+          options={{
+            tabBarShowLabel: false,
+          }}
+        />
+        <Tab.Screen
+          name="InfiniteNewsScreen"
+          component={InfiniteNewsScreen}
           options={{
             tabBarShowLabel: false,
           }}
@@ -102,7 +112,7 @@ const Navigation = () => {
               fontFamily: theme.fonts.regular,
               color: theme.colors.text,
             },
-            headerStyle: {backgroundColor: theme.colors.card},
+            headerStyle: { backgroundColor: theme.colors.card },
           }}
         />
       </Stack.Navigator>

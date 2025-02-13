@@ -2,6 +2,7 @@ import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../context/ThemeContext';
 import InfiniteNewsCard from '../components/InfiniteNewsCard';
+import newsData from '../utils/randomNewData.json';
 
 const InfiniteNewsScreen = () => {
   const { theme } = useTheme();
@@ -10,7 +11,7 @@ const InfiniteNewsScreen = () => {
   const renderItem = ({ item, index }: any) => {
     return (
       <InfiniteNewsCard
-        data={item}
+        item={item}
       />
     )
   }
@@ -22,9 +23,18 @@ const InfiniteNewsScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
       <FlatList
-        data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+        data={newsData.articles}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
+        pagingEnabled
+        windowSize={2}
+        disableIntervalMomentum={true}
+        removeClippedSubviews
+        initialNumToRender={1}
+        onEndReachedThreshold={0.1}
+        decelerationRate={'normal'}
+        showsVerticalScrollIndicator={false}
+        scrollEventThrottle={16}
       />
     </SafeAreaView>
   )
